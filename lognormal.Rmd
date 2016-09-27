@@ -10,7 +10,6 @@ We draw all numbers using the function _dnorm()_ and we do this 100 times.
 To make sure we draw from a lognormal distribution, we add the variable _log=TRUE_ as an argument.
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 x <- rlnorm(1:100, mean=0, sd=0.25)
 ```
 
