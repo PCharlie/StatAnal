@@ -5,9 +5,8 @@ date: "27 september 2016"
 output: pdf_document
 ---
 
-## Drawing an _incredible_ load of numbers from a **pretty weird** distribution
-We draw all numbers using the function _dnorm()_ and we do this 100 times.
-To make sure we draw from a lognormal distribution, we add the variable _log=TRUE_ as an argument.
+## Drawing from a **lognormal distribution**
+We draw 100 numbers using the function _rlnorm()_.
 
 ```{r setup, include=FALSE}
 x <- rlnorm(1:100, mean=0, sd=0.25)
@@ -15,10 +14,10 @@ x <- rlnorm(1:100, mean=0, sd=0.25)
 
 #### Checking whether x approximates the correct distribution
 We do so by making a histogram by using the function _hist_.
-
+To correct for the log-distribution, we use a scaled x-axis.
 
 ```{}
-hi <- hist(log(x), freq=FALSE)
+hist(x, freq=FALSE, log="x")
 ```
 
 
@@ -26,12 +25,14 @@ hi <- hist(log(x), freq=FALSE)
 #### Calculating the mean and standard deviation
 The mean is simply calculated by the function _mean()_ and the sd by the function _sd()_.
 
-```{r pressure, echo=FALSE}
+```{r pressure}
 mean <- mean(x)
 sd <- sd(x)
+print(mean)
+print(sd)
 ```
 
 mean = 1.03
 sd = 0.22
 These are not exactly equal to the actual mean and sd.
-The higher the amount of drawn points gets, the better the epproximation is.
+The higher the amount of drawn points gets, the better the approximation is.
